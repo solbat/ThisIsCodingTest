@@ -1,4 +1,5 @@
-l = (100, 200)
-l[0] = 300
+n, m = map(int, input().split())
 
-print(l[0])
+d = [[0] * m for _ in range(n)]
+
+print(d)

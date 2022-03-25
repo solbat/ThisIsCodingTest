@@ -19,6 +19,7 @@ map_visited = [[0] * m for _ in range(n)]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
+# 방문한 위치 카운트할 변수, 주변에 못 가는 방향 카운트할 변수
 count = 0
 explore = 0
 

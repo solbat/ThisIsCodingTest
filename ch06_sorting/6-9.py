@@ -6,5 +6,5 @@ def setting(data):
     return data[1]
 
 # result = sorted(array, key=setting)
-result = sorted(array, key = lambda x : x[1])
+result = sorted(array, key = lambda x : x[1]) # 람다 함수를 활용
 print(result)

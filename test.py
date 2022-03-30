@@ -1,26 +1,51 @@
-from collections import deque
+# selection sort
 
-def dfs(graph, v, visited):
-    # 현재 노드를 방문 처리
-    visited[v] = True
-    print(v, end = ' ')
-    # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
-    for i in graph[v]:
-        if not visited[i]:
-            dfs(graph, i, visited)
+array = list(map(int, input().split()))
 
-def bfs(graph, start, visited):
-    # 큐(Queue) 구현을 위해 deque 라이브러리 사용
-    queue = deque([start])
-    # 현재 노드를 방문 처리
-    visited[start] = True
-    # 큐가 빌 때까지 반복
-    while queue:
-        # 큐에서 하나의 원소를 뽑아 출력
-        v = queue.popleft()
-        print(v, end = ' ')
-        # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-        for i in graph[v]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
+for i in range(len(array)):
+    min_index = 1
+    for j in range(i+1, len(array)):
+        if array[min_index]>array[j]:
+            min_index = j
+    array[i], array[min_index] = array[min_index], array[i]
+
+# insertion sort
+
+for i in range(1, len(array)):
+    for j in range(i, 0, -1):
+        if array[j]<array[j-1]:
+            array[j], array[j-1] = array[j-1], array[j]
+        else:
+            break
+
+# quick sort
+def quick_sort(array, start, end):
+    if start>=end:
+        return
+    pivot = start
+    left = start+1
+    right = end
+    while left<=right:
+        while left<=end and array[left]<=array[pivot]:
+            left += 1
+        while right>start and array[right]>=array[pivot]:
+            right -= 1
+        if left>right:
+            array[right], array[pivot] = array[pivot], array[right]
+        else:
+            array[left], array[right] = array[right], array[left]
+    quick_sort(array, start, right-1)
+    quick_sort(array, right+1, end)
+
+def quick_sort_good(array):
+    if len(array)<=1:
+        return array
+    
+    pivot = array[0]
+    tail = array[1:]
+
+    left_side = [x for x in tail if x <= pivot]
+    right_side = [x for x in tail if x > pivot]
+
+    return quick_sort_good(left_side) + [pivot] + quick_sort_good(right_side)
+

@@ -1,25 +1,30 @@
-# 9-3.py 플로이드 워셜 알고리즘 소스코드
+data1 = dict()
+data1['사과'] = 'apple'
+data1['배'] = 'pear'
+data1['오렌지'] = 'orange'
 
-INF = int(1e9)
+print(data1)
 
-n = 5
+data2 = {'기차': 'train', '차': 'car', '바이크': 'bike', 1: 2}
+print(data2)
 
-# 2차원 리스트(그래프 표현)를 만들고, 모든 값을 무한으로 초기화
-graph1 = [[INF] * (n+1) for _ in range(n+1)]
-graph2 = [[INF] * (n+1) for _ in range(n+1)]
+data1[1] = 2
+print(data1)
 
-# 자기 자신에서 자기 자신으로 가는 비용은 0으로 초기화
-for a in range(1, n+1):
-    for b in range(1, n+1):
-        if a == b:
-            graph1[a][b] = 0
+print()
 
-print(graph1)
+data3 = set([1, 2, 3, 4, 5, 5, 5])
+print(data3)
 
-for i in range(1, n+1):
-    graph2[i][i] = 0
+data4 = [1, 2, 3, 4, 5, 5, 5, 3, 4, 3, 4, 2, 2, 2, 1, 1, 7]
+print(data4.count(3))
 
-print(graph2)
+a = 1
 
-if graph1 == graph2:
-    print("YES!!!!!!!!!!")
+def func():
+    global a
+    a = 4
+    a += 1
+
+func()
+print(a)

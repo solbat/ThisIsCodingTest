@@ -1,6 +1,11 @@
-from math import factorial
+graph = [[1, 2, 3, 4, 5], [5, 4, 3, 2, 1], [1, 1, 1, 1, 1], [2, 2, 2, 2, 2], [3, 3, 3, 3, 3]]
 
-def combination(n, r):
-    return int(factorial(n)/(factorial(r)*factorial(n-r)))
+num = 0
 
-print(combination(100, 10))
+def change():
+    graph[0][1] = 1
+    num = 1
+
+change()
+print(graph)
+print(num)
